@@ -1,0 +1,166 @@
+{
+	"name": "outlook-unofficial",
+	"displayName": "Outlook (Unofficial)",
+	"preview": true,
+	"publisher": "TylerLeonhardt",
+	"license": "MIT",
+	"repository": {
+		"url": "https://github.com/TylerLeonhardt/vscode-outlook-unofficial"
+	},
+	"description": "Read or write emails for VS Code",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.64.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onView:outlook-unofficial.mailFolderView",
+		"onCommand:outlook-unofficial.login"
+	],
+	"capabilities": {
+		"virtualWorkspaces": true,
+		"untrustedWorkspaces": {
+			"supported": true
+		}
+	},
+	"browser": "./dist/web/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "outlook-unofficial.login",
+				"title": "Login",
+				"category": "Outlook (Unofficial)"
+			},
+			{
+				"command": "outlook-unofficial.refresh",
+				"title": "Refresh",
+				"category": "Outlook (Unofficial)",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "outlook-unofficial.refreshThisFolder",
+				"title": "Refresh",
+				"category": "Outlook (Unofficial)",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "outlook-unofficial.delete",
+				"title": "Delete",
+				"category": "Outlook (Unofficial)",
+				"icon": "$(trash)"
+			},
+			{
+				"command": "outlook-official.openMessage",
+				"title": "Open",
+				"category": "Outlook (Unofficial)",
+				"icon": "$(open-preview)"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "outlook-unofficial",
+					"title": "Outlook (Unofficial)",
+					"icon": "$(inbox)"
+				}
+			]
+		},
+		"views": {
+			"outlook-unofficial": [
+				{
+					"id": "outlook-unofficial.mailFolderView",
+					"name": "Folders",
+					"type": "tree",
+					"visibility": "visible"
+				},
+				{
+					"id": "outlook-unofficial.mailMessageView",
+					"name": "Messages",
+					"type": "tree",
+					"visibility": "visible"
+				}
+			]
+		},
+		"viewsWelcome": [
+			{
+				"view": "outlook-unofficial.mailFolderView",
+				"contents": "Login to see your emails.\n[Login](command:outlook-unofficial.login)"
+			},
+			{
+				"view": "outlook-unofficial.mailMessageView",
+				"contents": "Select a folder to see your emails."
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"COMMANDS THAT SHOULD NOT SHOW UP IN THE COMMAND PALETTE": "",
+					"command": "outlook-unofficial.delete",
+					"when": "false"
+				},
+				{
+					"command": "outlook-official.openMessage",
+					"when": "false"
+				}
+			],
+			"view/title": [
+				{
+					"command": "outlook-unofficial.refresh",
+					"when": "view == outlook-unofficial.mailFolderView",
+					"group": "navigation@1"
+				},
+				{
+					"command": "outlook-unofficial.refreshThisFolder",
+					"when": "view == outlook-unofficial.mailMessageView",
+					"group": "navigation@1"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "outlook-unofficial.delete",
+					"when": "viewItem == mailMessage",
+					"group": "inline"
+				},
+				{
+					"command": "outlook-official.openMessage",
+					"when": "viewItem == mailMessage",
+					"group": "inline"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"test": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. --extensionTestsPath=dist/web/test/suite/index.js",
+		"pretest": "yarn run compile-web",
+		"vscode:prepublish": "yarn run package-web",
+		"compile-web": "webpack",
+		"watch-web": "webpack --watch",
+		"package-web": "webpack --mode production --devtool hidden-source-map",
+		"lint": "eslint src --ext ts",
+		"run-in-browser": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. ."
+	},
+	"devDependencies": {
+		"@microsoft/microsoft-graph-types": "^2.13.0",
+		"@types/isomorphic-fetch": "^0.0.35",
+		"@types/mocha": "^9.0.0",
+		"@types/vscode": "^1.64.0",
+		"@types/webpack-env": "^1.16.3",
+		"@typescript-eslint/eslint-plugin": "^5.9.1",
+		"@typescript-eslint/parser": "^5.9.1",
+		"@vscode/test-web": "^0.0.15",
+		"assert": "^2.0.0",
+		"eslint": "^8.6.0",
+		"mocha": "^9.1.3",
+		"process": "^0.11.10",
+		"ts-loader": "^9.2.6",
+		"typescript": "^4.5.4",
+		"webpack": "^5.66.0",
+		"webpack-cli": "^4.9.1"
+	},
+	"dependencies": {
+		"@microsoft/microsoft-graph-client": "^3.0.2",
+		"isomorphic-fetch": "^3.0.0"
+	}
+}
