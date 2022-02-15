@@ -31,7 +31,7 @@ export function activate(context: vscode.ExtensionContext) {
 			await vscode.authentication.getSession('microsoft', result === 'Microsoft account' ? MicrosoftGraphClientFactory.msaScopes : MicrosoftGraphClientFactory.scopes, { createIfNone: true });
 			await context.globalState.update('outlookUnofficialLoginType', { type: provider });
 			clientProvider.setLoginType(provider);
-			vscode.commands.executeCommand('outlook-unofficial.refresh');
+			vscode.commands.executeCommand('outlook-unofficial.refreshFolder');
 		}));
 	
 	context.subscriptions.push(vscode.authentication.onDidChangeSessions((e) => clientProvider.clearLoginTypeState(e)));

@@ -23,14 +23,14 @@ export class OutlookMessageTreeDataProvider extends Disposable implements TreeDa
 		});
 
 		this.disposables.push(commands.registerCommand(
-			'outlook-unofficial.refreshThisFolder',
+			'outlook-unofficial.refreshMessages',
 			() => {
-				commands.executeCommand('outlook-unofficial.refresh', this.currentFolder);
+				commands.executeCommand('outlook-unofficial.refreshFolder', this.currentFolder);
 				this.didChangeTreeData.fire();
 			}));
 
 		this.disposables.push(commands.registerCommand(
-			'outlook-unofficial.delete',
+			'outlook-unofficial.deleteMessage',
 			(node: Message, nodes: Message[] | undefined) => {
 				if (nodes && nodes.length > 0) {
 					return this.deleteEmails(nodes);

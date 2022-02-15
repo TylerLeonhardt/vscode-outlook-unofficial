@@ -34,19 +34,19 @@
 				"category": "Outlook (Unofficial)"
 			},
 			{
-				"command": "outlook-unofficial.refresh",
+				"command": "outlook-unofficial.refreshFolder",
 				"title": "Refresh",
 				"category": "Outlook (Unofficial)",
 				"icon": "$(refresh)"
 			},
 			{
-				"command": "outlook-unofficial.refreshThisFolder",
+				"command": "outlook-unofficial.refreshMessages",
 				"title": "Refresh",
 				"category": "Outlook (Unofficial)",
 				"icon": "$(refresh)"
 			},
 			{
-				"command": "outlook-unofficial.delete",
+				"command": "outlook-unofficial.deleteMessage",
 				"title": "Delete",
 				"category": "Outlook (Unofficial)",
 				"icon": "$(trash)"
@@ -97,7 +97,7 @@
 			"commandPalette": [
 				{
 					"COMMANDS THAT SHOULD NOT SHOW UP IN THE COMMAND PALETTE": "",
-					"command": "outlook-unofficial.delete",
+					"command": "outlook-unofficial.deleteMessage",
 					"when": "false"
 				},
 				{
@@ -107,19 +107,19 @@
 			],
 			"view/title": [
 				{
-					"command": "outlook-unofficial.refresh",
+					"command": "outlook-unofficial.refreshFolder",
 					"when": "view == outlook-unofficial.mailFolderView",
 					"group": "navigation@1"
 				},
 				{
-					"command": "outlook-unofficial.refreshThisFolder",
+					"command": "outlook-unofficial.refreshMessages",
 					"when": "view == outlook-unofficial.mailMessageView",
 					"group": "navigation@1"
 				}
 			],
 			"view/item/context": [
 				{
-					"command": "outlook-unofficial.delete",
+					"command": "outlook-unofficial.deleteMessage",
 					"when": "viewItem == mailMessage",
 					"group": "inline"
 				},

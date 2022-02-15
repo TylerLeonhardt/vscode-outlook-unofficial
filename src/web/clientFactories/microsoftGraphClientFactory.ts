@@ -56,6 +56,6 @@ export class MicrosoftGraphClientFactory {
 
 		await this.globalState.update('outlookUnofficialLoginType', {});
 		this.setLoginType(undefined);
-		await vscode.commands.executeCommand('outlook-unofficial.refresh');
+		await vscode.commands.executeCommand('outlook-unofficial.refreshFolder');
 	}
 }

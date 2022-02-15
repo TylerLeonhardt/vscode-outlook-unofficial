@@ -12,7 +12,7 @@ export class OutlookMailFolderTreeDataProvider extends Disposable implements Tre
 		super(() => this.dispose());
 
 		this.disposibles.push(commands.registerCommand(
-			'outlook-unofficial.refresh',
+			'outlook-unofficial.refreshFolder',
 			(element?: MailFolder) => this.didChangeTreeData.fire(element)));
 	}
 
