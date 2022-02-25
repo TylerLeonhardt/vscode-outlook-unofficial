@@ -13,4 +13,3 @@ Interact with Outlook right in VS Code!
 
 * A Microsoft account
 * A work or school account
-sdfg
