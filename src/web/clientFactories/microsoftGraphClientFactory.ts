@@ -3,7 +3,7 @@ import * as vscode from 'vscode';
 
 export class MicrosoftGraphClientFactory {
 	static scopes: string[] = ['Mail.ReadWrite', 'offline_access'];
-	static msaScopes = ['VSCODE_CLIENT_ID:a4fd7674-4ebd-4dbc-831c-338314dd459e', 'VSCODE_TENANT:consumers', 'Mail.ReadWrite', 'offline_access'];
+	static msaScopes = ['VSCODE_CLIENT_ID:c2152367-0364-400a-aeca-aec63dac3ea2', 'VSCODE_TENANT:consumers', 'Mail.ReadWrite', 'offline_access'];
 	private loginType: 'msa' | 'microsoft' | undefined;
 	private session: vscode.AuthenticationSession | undefined;
 
